@@ -59,32 +59,19 @@
 							</div><!-- navbar-header -->
 						</div>
 						<div class="col-xs-12 col-sm-9">
-							<div class="collapse navbar-collapse" id="menu">
-								<ul class="nav navbar-nav navbar-right">
-									<li class="dropdown">
-										<a href="#subMenu01" class="dropdown-toggle" data-rel="subMenu01">Kurumsal <b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li><a href="#">Action</a></li>
-											<li><a href="#">Another action</a></li>
-											<li><a href="#">Something else here</a></li>
-											<li><a href="#">Separated link</a></li>
-										</ul>
-									</li>
-									<li class="dropdown">
-										<a href="#subMenu02" class="dropdown-toggle" data-rel="subMenu02">Hizmetlerimiz <b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li><a href="#">Action</a></li>
-											<li><a href="#">Another action</a></li>
-											<li><a href="#">Something else here</a></li>
-											<li><a href="#">Separated link</a></li>
-										</ul>
-									</li>
-									<li><a href="#">Yatırım Arazileri</a></li>
-									<li><a href="#">Blog</a></li>
-									<li><a href="#">S.S.S</a></li>
-									<li><a href="#">İletişim</a></li>
-								</ul>
-							</div><!-- navbar-collapse -->
+<?php
+wp_nav_menu( array(
+	'menu'            => 'primary',
+	'theme_location'  => 'primary',
+	'depth'           => 2,
+	'container'       => 'div',
+	'container_class' => 'collapse navbar-collapse',
+	'container_id'    => 'menu',
+	'menu_class'      => 'nav navbar-nav navbar-right',
+	'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+	'walker'          => new WP_Bootstrap_Navwalker())
+);
+?>
 						</div>
 					</div>
 				</div>

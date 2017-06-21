@@ -76,6 +76,9 @@ require get_template_directory() . '/inc/template-functions.php';
 // White Label functions
 require get_template_directory() . '/inc/wp-white-label.php';
 
+// Register Custom Navigation Walker
+require get_template_directory() . '/library/wp-bootstrap-navwalker/wp-bootstrap-navwalker.php';
+
 /**
  * Filters the Theme Options ID
  */

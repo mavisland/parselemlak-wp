@@ -9,7 +9,7 @@ function ot_theme_styles() {
   wp_enqueue_style( 'ot-theme', get_stylesheet_uri() );
 
 }
-add_action( 'wp_enqueue_scripts', 'ot_theme_styles' );
+// add_action( 'wp_enqueue_scripts', 'ot_theme_styles' );
 
 /**
  * Helper function to format the options return value.
