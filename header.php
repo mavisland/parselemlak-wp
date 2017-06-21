@@ -1,54 +1,120 @@
-<?php
-/**
- * The header for our theme
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package Parsel_Emlak
- */
-
-?><!doctype html>
-<html <?php language_attributes(); ?>>
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" <?php language_attributes(); ?>> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="icon" type="image/x-icon" href="<?php echo get_template_directory_uri(); ?>/images/favicon.png" />
 <?php wp_head(); ?>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/modernizr.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="<?php echo get_template_directory_uri(); ?>/js/html5-3.6-respond-1.4.2.min.js"></script>
+	<![endif]-->
 </head>
-
 <body <?php body_class(); ?>>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'parsel' ); ?></a>
-
-	<header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
-			<?php
-			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-			endif;
-
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php
-			endif; ?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'parsel' ); ?></button>
-			<?php
-				wp_nav_menu( array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				) );
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
-
-	<div id="content" class="site-content">
+	<header class="site-header" id="header">
+		<div class="header-top">
+			<div class="wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<div class="header-top-left">
+								<ul class="social-links">
+									<li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+									<li><a href="#" title="Youtube"><i class="fa fa-youtube"></i></a></li>
+								</ul>
+							</div><!-- header-top-left -->
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<div class="header-top-right">
+								<a href="#" class="contact-phone"><i class="fa fa-phone"></i>444 9 411</a>
+							</div><!-- header-top-right -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- header-top -->
+		<div class="navbar">
+			<div class="wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12 col-sm-3">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+									<span class="sr-only">Menüyü görüntüle</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+									<span class="label sr-only"><?php bloginfo( 'name' ); ?></span>
+									<img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="<?php bloginfo( 'name' ); ?>">
+								</a>
+							</div><!-- navbar-header -->
+						</div>
+						<div class="col-xs-12 col-sm-9">
+							<div class="collapse navbar-collapse" id="menu">
+								<ul class="nav navbar-nav navbar-right">
+									<li class="dropdown">
+										<a href="#subMenu01" class="dropdown-toggle" data-rel="subMenu01">Kurumsal <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Action</a></li>
+											<li><a href="#">Another action</a></li>
+											<li><a href="#">Something else here</a></li>
+											<li><a href="#">Separated link</a></li>
+										</ul>
+									</li>
+									<li class="dropdown">
+										<a href="#subMenu02" class="dropdown-toggle" data-rel="subMenu02">Hizmetlerimiz <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Action</a></li>
+											<li><a href="#">Another action</a></li>
+											<li><a href="#">Something else here</a></li>
+											<li><a href="#">Separated link</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Yatırım Arazileri</a></li>
+									<li><a href="#">Blog</a></li>
+									<li><a href="#">S.S.S</a></li>
+									<li><a href="#">İletişim</a></li>
+								</ul>
+							</div><!-- navbar-collapse -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- navbar -->
+		<div class="header-bottom" id="subMenu">
+			<div class="wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="collapse fade" id="subMenu01">
+								<ul class="submenu">
+									<li><a href="#">Hakkımızda</a></li>
+									<li><a href="#">Vizyon &amp; Misyon</a></li>
+									<li><a href="#">Basın Odası</a></li>
+									<li><a href="#">Belgelerimiz</a></li>
+									<li><a href="#">İnsan Kaynakları</a></li>
+								</ul>
+							</div><!-- collapse -->
+							<div class="collapse fade" id="subMenu02">
+								<ul class="submenu">
+									<li><a href="#">Bahçe Bakımı</a></li>
+									<li><a href="#">Arazi Alış &amp; Satış</a></li>
+									<li><a href="#">Fidan Satışı</a></li>
+									<li><a href="#">Bahçe Kurulumu</a></li>
+								</ul>
+							</div><!-- collapse -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- header-bottom -->
+	</header><!-- site-header -->
