@@ -453,7 +453,8 @@ h6 {
 p {
   margin: 0 0 10.5px;
 }
-small {
+small,
+.small {
   font-size: 86%;
 }
 .text-left {
@@ -7769,7 +7770,7 @@ a:focus {
   outline: 0;
 }
 /* -------------------------------------------------- *\
-    $CONTENT
+	$CONTENT
 \* -------------------------------------------------- */
 .wrapper {
   display: block;
@@ -7810,6 +7811,11 @@ a:focus {
 .section-body {
   position: relative;
   width: 100%;
+}
+.main-content {
+  position: relative;
+  padding-bottom: 30px;
+  padding-top: 30px;
 }
 /* -------------------------------------------------- *\
     $HELPERS
