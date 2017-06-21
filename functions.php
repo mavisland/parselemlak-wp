@@ -195,3 +195,25 @@ require( trailingslashit( get_template_directory() ) . 'inc/customizer.php' );
  * Demo Functions (for demonstration purposes only!)
  */
 require( trailingslashit( get_template_directory() ) . 'inc/functions.php' );
+
+function soru_shortcode( $atts, $content = null ) {
+	extract( shortcode_atts( array( 'baslik' => '', ), $atts ) );
+	$rand = rand();
+
+	$output = '
+	<div class="panel panel-default ">
+		<div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#' . $rand . '">
+			<h4 class="panel-title">
+				<a role="button" data-toggle="collapse" data-parent="#faqAccordion" href="#' . $rand . '" aria-expanded="true" aria-controls="' . $rand . '">'. $baslik .'</a>
+			</h4>
+		</div>
+		<div id="' . $rand . '" class="panel-collapse collapse" style="height: 0px;">
+			<div class="panel-body">
+				<p>' . do_shortcode($content) . '</p>
+			</div>
+		</div>
+	</div>';
+
+	return $output;
+}
+add_shortcode('soru', 'soru_shortcode');

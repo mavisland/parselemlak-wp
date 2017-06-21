@@ -30,5 +30,6 @@
 				</div>
 			</div>
 		</div><!-- main-content -->
+<?php get_template_part( 'partials/section', 'cntlinks' ); ?>
 	</div><!-- site-content -->
 <?php get_footer(); ?>
