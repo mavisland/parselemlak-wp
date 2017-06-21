@@ -321,12 +321,12 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  color: #c09600;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #23527c;
+  color: #4e4e4c;
   text-decoration: none;
 }
 a:focus {
@@ -553,11 +553,6 @@ a.bg-warning:focus {
 a.bg-danger:hover,
 a.bg-danger:focus {
   background-color: #e4b9b9;
-}
-.page-header {
-  padding-bottom: 9.5px;
-  margin: 42px 0 21px;
-  border-bottom: 1px solid #eeeeee;
 }
 ul,
 ol {
@@ -2478,7 +2473,7 @@ fieldset[disabled] .btn-danger.focus {
   background-color: #fff;
 }
 .btn-link {
-  color: #337ab7;
+  color: #c09600;
   font-weight: normal;
   border-radius: 0;
 }
@@ -2498,7 +2493,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: #23527c;
+  color: #4e4e4c;
   text-decoration: none;
   background-color: transparent;
 }
@@ -2740,7 +2735,7 @@ tbody.collapse.in {
 .nav .open > a:hover,
 .nav .open > a:focus {
   background-color: #eeeeee;
-  border-color: #337ab7;
+  border-color: #c09600;
 }
 .nav .nav-divider {
   height: 1px;
@@ -3077,7 +3072,7 @@ tbody.collapse.in {
   padding: 6px 12px;
   line-height: 1.42857143;
   text-decoration: none;
-  color: #337ab7;
+  color: #c09600;
   background-color: #fff;
   border: 1px solid #ddd;
   margin-left: -1px;
@@ -3098,7 +3093,7 @@ tbody.collapse.in {
 .pagination > li > a:focus,
 .pagination > li > span:focus {
   z-index: 2;
-  color: #23527c;
+  color: #4e4e4c;
   background-color: #eeeeee;
   border-color: #ddd;
 }
@@ -7763,7 +7758,7 @@ body {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-top: 130px;
+  padding-top: 135px;
 }
 a {
   transition: all 200ms ease;
@@ -8027,6 +8022,7 @@ a:focus {
 \* -------------------------------------------------- */
 .site-header {
   background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11);
   position: relative;
   transition: all 0.4s ease;
   width: 100%;
@@ -8038,7 +8034,6 @@ a:focus {
 }
 .site-header.shrink {
   background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11);
 }
 .site-header.shrink .header-top {
   height: 0;
@@ -8104,9 +8099,6 @@ a:focus {
   padding-bottom: 6px;
   padding-top: 6px;
   text-align: right;
-}
-.navbar {
-  background-color: #fff;
 }
 .navbar .navbar-brand {
   color: #000;
