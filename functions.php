@@ -1,4 +1,8 @@
 <?php
+/**
+ * OptionTree Theme version
+ */
+define( 'OT_THEME_VERSION', '2.5.4' );
 
 if ( ! function_exists( 'parsel_setup' ) ) :
 function parsel_setup() {
@@ -43,6 +47,13 @@ add_action( 'widgets_init', 'parsel_widgets_init' );
  * Enqueue scripts and styles.
  */
 function parsel_scripts() {
+	// Replace default WordPress jQuery script with local file.
+	if ( !is_admin() ) {
+		wp_deregister_script( 'jquery' );
+		wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery.min.js', false, '3.2.1' );
+		wp_enqueue_script( 'jquery' );
+	}
+
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.min.css' );
 	wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.min.js', 'jquery', '1.0.0', true );
 
@@ -51,23 +62,6 @@ function parsel_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'parsel_scripts' );
-
-/**
- * Replace default WordPress jQuery script with local file.
- */
-function modify_jquery() {
-	if ( !is_admin() ) {
-		wp_deregister_script( 'jquery' );
-		wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery.min.js', false, '3.2.1' );
-		wp_enqueue_script( 'jquery' );
-	}
-}
-add_action('init', 'modify_jquery');
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -79,22 +73,122 @@ require get_template_directory() . '/inc/template-tags.php';
  */
 require get_template_directory() . '/inc/template-functions.php';
 
+// White Label functions
+require get_template_directory() . '/inc/wp-white-label.php';
+
 /**
- * Customization Codes
+ * Filters the Theme Options ID
  */
-// Remove the Admin Toolbar with Code
-add_filter('show_admin_bar', '__return_false');
-
-// Disable Admin Bar for All Users Except for Administrators
-function remove_admin_bar() {
-	if (!current_user_can('administrator') && !is_admin()) {
-		show_admin_bar(false);
-	}
+function filter_demo_options_id() {
+	return 'demo_option_tree';
 }
-// add_action('after_setup_theme', 'remove_admin_bar');
+add_filter( 'ot_options_id', 'filter_demo_options_id' );
 
-// Remove Wordpress Emoji
-remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-remove_action( 'wp_print_styles', 'print_emoji_styles' );
-remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-remove_action( 'admin_print_styles', 'print_emoji_styles' );
+/**
+ * Filters the Settings ID
+ */
+function filter_demo_settings_id() {
+	return 'demo_option_tree_settings';
+}
+add_filter( 'ot_settings_id', 'filter_demo_settings_id' );
+
+/**
+ * Filters the Layouts ID
+ */
+function filter_demo_layouts_id() {
+	return 'demo_option_tree_layouts';
+}
+add_filter( 'ot_layouts_id', 'filter_demo_layouts_id' );
+
+/**
+ * Filters the Theme Option header list.
+ */
+function filter_demo_header_list() {
+	 echo '<li id="theme-version"><span>OptionTree Theme ' . OT_THEME_VERSION . '</span></li>';
+}
+add_action( 'ot_header_list', 'filter_demo_header_list' );
+
+/**
+ * Theme Mode
+ */
+add_filter( 'ot_theme_mode', '__return_true' );
+
+/**
+ * Child Theme Mode
+ */
+add_filter( 'ot_child_theme_mode', '__return_false' );
+
+/**
+ * Show Settings Pages
+ */
+add_filter( 'ot_show_pages', '__return_true' );
+
+/**
+ * Show Theme Options UI Builder
+ */
+add_filter( 'ot_show_options_ui', '__return_false' );
+
+/**
+ * Show Settings Import
+ */
+add_filter( 'ot_show_settings_import', '__return_true' );
+
+/**
+ * Show Settings Export
+ */
+add_filter( 'ot_show_settings_export', '__return_true' );
+
+/**
+ * Show New Layout
+ */
+add_filter( 'ot_show_new_layout', '__return_false' );
+
+/**
+ * Show Documentation
+ */
+add_filter( 'ot_show_docs', '__return_false' );
+
+/**
+ * Custom Theme Option page
+ */
+add_filter( 'ot_use_theme_options', '__return_true' );
+
+/**
+ * Meta Boxes
+ */
+add_filter( 'ot_meta_boxes', '__return_true' );
+
+/**
+ * Allow Unfiltered HTML in textareas options
+ */
+add_filter( 'ot_allow_unfiltered_html', '__return_false' );
+
+/**
+ * Loads the meta boxes for post formats
+ */
+add_filter( 'ot_post_formats', '__return_true' );
+
+/**
+ * OptionTree in Theme Mode
+ */
+require( trailingslashit( get_template_directory() ) . 'admin/ot-loader.php' );
+
+/**
+ * Theme Options
+ */
+require( trailingslashit( get_template_directory() ) . 'inc/theme-options.php' );
+
+/**
+ * Meta Boxes
+ */
+require( trailingslashit( get_template_directory() ) . 'inc/meta-boxes.php' );
+
+/**
+ * Theme Customizer
+ */
+require( trailingslashit( get_template_directory() ) . 'inc/customizer.php' );
+
+/**
+ * Demo Functions (for demonstration purposes only!)
+ */
+require( trailingslashit( get_template_directory() ) . 'inc/functions.php' );
