@@ -1,20 +1,16 @@
 <?php
-/**
- * OptionTree Theme version
- */
+
+// OptionTree Theme version
 define( 'OT_THEME_VERSION', '2.5.4' );
 
 if ( ! function_exists( 'parsel_setup' ) ) :
 function parsel_setup() {
-	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
-
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
-
-	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => 'Üst Menü',
+		'primary'   => 'Üst Menü',
+		'secondary' => 'Yan Menü',
 	) );
 }
 endif;
@@ -25,27 +21,7 @@ function parsel_content_width() {
 }
 add_action( 'after_setup_theme', 'parsel_content_width', 0 );
 
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function parsel_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'parsel' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'parsel' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
-add_action( 'widgets_init', 'parsel_widgets_init' );
-
-/**
- * Enqueue scripts and styles.
- */
+// Enqueue scripts and styles.
 function parsel_scripts() {
 	// Replace default WordPress jQuery script with local file.
 	if ( !is_admin() ) {
@@ -53,10 +29,8 @@ function parsel_scripts() {
 		wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery.min.js', false, '3.2.1' );
 		wp_enqueue_script( 'jquery' );
 	}
-
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.min.css' );
 	wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.min.js', 'jquery', '1.0.0', true );
-
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -111,90 +85,36 @@ function filter_demo_header_list() {
 }
 add_action( 'ot_header_list', 'filter_demo_header_list' );
 
-/**
- * Theme Mode
- */
+// Theme Mode
 add_filter( 'ot_theme_mode', '__return_true' );
-
-/**
- * Child Theme Mode
- */
+// Child Theme Mode
 add_filter( 'ot_child_theme_mode', '__return_false' );
-
-/**
- * Show Settings Pages
- */
+// Show Settings Pages
 add_filter( 'ot_show_pages', '__return_true' );
-
-/**
- * Show Theme Options UI Builder
- */
-add_filter( 'ot_show_options_ui', '__return_false' );
-
-/**
- * Show Settings Import
- */
+// Show Theme Options UI Builder
+add_filter( 'ot_show_options_ui', '__return_true' );
+// Show Settings Import
 add_filter( 'ot_show_settings_import', '__return_true' );
-
-/**
- * Show Settings Export
- */
+// Show Settings Export
 add_filter( 'ot_show_settings_export', '__return_true' );
-
-/**
- * Show New Layout
- */
+// Show New Layout
 add_filter( 'ot_show_new_layout', '__return_false' );
-
-/**
- * Show Documentation
- */
+// Show Documentation
 add_filter( 'ot_show_docs', '__return_false' );
-
-/**
- * Custom Theme Option page
- */
+// Custom Theme Option page
 add_filter( 'ot_use_theme_options', '__return_true' );
-
-/**
- * Meta Boxes
- */
+// Meta Boxes
 add_filter( 'ot_meta_boxes', '__return_true' );
-
-/**
- * Allow Unfiltered HTML in textareas options
- */
+// Allow Unfiltered HTML in textareas options
 add_filter( 'ot_allow_unfiltered_html', '__return_false' );
-
-/**
- * Loads the meta boxes for post formats
- */
+// Loads the meta boxes for post formats
 add_filter( 'ot_post_formats', '__return_true' );
-
-/**
- * OptionTree in Theme Mode
- */
+// OptionTree in Theme Mode
 require( trailingslashit( get_template_directory() ) . 'admin/ot-loader.php' );
-
-/**
- * Theme Options
- */
+// Theme Options
 require( trailingslashit( get_template_directory() ) . 'inc/theme-options.php' );
-
-/**
- * Meta Boxes
- */
+// Meta Boxes
 require( trailingslashit( get_template_directory() ) . 'inc/meta-boxes.php' );
-
-/**
- * Theme Customizer
- */
-require( trailingslashit( get_template_directory() ) . 'inc/customizer.php' );
-
-/**
- * Demo Functions (for demonstration purposes only!)
- */
-require( trailingslashit( get_template_directory() ) . 'inc/functions.php' );
 
 function soru_shortcode( $atts, $content = null ) {
 	extract( shortcode_atts( array( 'baslik' => '', ), $atts ) );
