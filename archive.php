@@ -31,7 +31,6 @@
 <?php endif; ?>
 						</div>
 						<div class="col-xs-12 col-sm-3 col-sm-pull-9">
-<?php get_sidebar(); ?>
 						</div>
 					</div>
 				</div>
