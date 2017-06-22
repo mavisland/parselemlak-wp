@@ -9106,7 +9106,17 @@ a:focus {
   filter: alpha(opacity=40);
 }
 @media (min-width: 992px) {
-  .content-links .link-item {
+  body.home .content-links .link-item {
     margin-top: -30px;
   }
+}
+/* -------------------------------------------------- *\
+	$NOTFOUND
+\* -------------------------------------------------- */
+.not-found {
+  text-align: center;
+}
+.not-found .p404 {
+  font-size: 150px;
+  font-weight: bold;
 }
