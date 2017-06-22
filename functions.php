@@ -37,16 +37,6 @@ function parsel_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'parsel_scripts' );
 
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Additional features to allow styling of the templates.
- */
-require get_template_directory() . '/inc/template-functions.php';
-
 // White Label functions
 require get_template_directory() . '/inc/wp-white-label.php';
 
