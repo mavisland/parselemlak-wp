@@ -8162,6 +8162,16 @@ a:focus {
   padding-bottom: 30px;
   padding-top: 30px;
 }
+.main-content .featured-image {
+  background-color: #ededed;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.main-content .featured-image img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
 /* -------------------------------------------------- *\
     $HELPERS
 \* -------------------------------------------------- */
