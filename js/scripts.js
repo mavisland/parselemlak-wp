@@ -2480,6 +2480,8 @@ $(document).ready(function(){
  * @author Tanju Yildiz <ben@tanjuyildiz.com> 
  */
 jQuery(document).ready(function(){
+  $("body").addClass("collapsed-sidebar");
+
   /**
    * Shrinking Navbar
    */

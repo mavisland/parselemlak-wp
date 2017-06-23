@@ -9108,25 +9108,27 @@ a:focus {
 /* -------------------------------------------------- *\
 	$CONTENT
 \* -------------------------------------------------- */
-#content,
-#sidebar {
-  opacity: 1;
-  filter: alpha(opacity=100);
-  overflow: hidden;
-  transition: all 0.2s ease;
-}
-body.collapsed-sidebar #content {
-  left: 0;
-  right: 0;
-  width: 100%;
-}
-body.collapsed-sidebar #sidebar {
-  display: none;
-  left: auto;
-  opacity: 0;
-  filter: alpha(opacity=0);
-  right: 100%;
-  width: 0;
+@media (min-width: 768px) {
+  #content,
+  #sidebar {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  body.collapsed-sidebar #content {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  body.collapsed-sidebar #sidebar {
+    display: none;
+    left: auto;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    right: 100%;
+    width: 0;
+  }
 }
 .main-content {
   position: relative;
