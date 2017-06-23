@@ -8462,7 +8462,8 @@ a:focus {
     float: left !important;
     float: left;
   }
-  .header-top .social-links > li > a {
+  .header-top .social-links > li > a,
+  .header-top .contact-phone {
     font-size: 18px;
     line-height: 1.55555556;
   }
