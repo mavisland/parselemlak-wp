@@ -8400,29 +8400,44 @@ a:focus {
 }
 .header-top {
   background-color: #403a36;
-  font-size: 18px;
-  height: 40px;
-  line-height: 1.55555556;
   overflow: hidden;
   transition: all 0.2s ease;
 }
-.header-top .social-links {
+.header-top .social-links,
+.header-top .topbar-links {
   list-style: none;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   padding-left: 0;
 }
-.header-top .social-links > li {
+.header-top .social-links > li,
+.header-top .topbar-links > li {
   display: inline-block;
-  padding-left: 10px;
-  padding-right: 10px;
 }
-.header-top .social-links > li > a {
+.header-top .social-links > li > a,
+.header-top .topbar-links > li > a {
   color: #fff;
   display: block;
 }
 .header-top .social-links > li > a:hover,
-.header-top .social-links > li > a:focus {
+.header-top .topbar-links > li > a:hover,
+.header-top .social-links > li > a:focus,
+.header-top .topbar-links > li > a:focus {
   color: #ba952b;
+}
+.header-top .social-links > li {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.header-top .topbar-links > li {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.header-top .topbar-links > li > a {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.header-top .social-links + .topbar-links {
+  margin-left: 10px;
 }
 .header-top .contact-phone {
   color: #ba952b;
@@ -8436,6 +8451,24 @@ a:focus {
 .header-top .contact-phone:hover,
 .header-top .contact-phone:focus {
   color: #fff;
+}
+@media (min-width: 768px) {
+  .header-top {
+    height: 40px;
+  }
+  .header-top .social-links,
+  .header-top .topbar-links {
+    margin-bottom: 0;
+    float: left !important;
+    float: left;
+  }
+  .header-top .social-links > li > a {
+    font-size: 18px;
+    line-height: 1.55555556;
+  }
+  .header-top .topbar-links > li > a {
+    line-height: 2.15384615;
+  }
 }
 .header-top-left {
   padding-bottom: 6px;

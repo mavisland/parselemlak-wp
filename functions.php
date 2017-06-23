@@ -10,8 +10,10 @@ function parsel_setup() {
 	add_theme_support( 'post-thumbnails' );
 	add_image_size( 'featured', 9999, 270, array( 'center', 'center' ) );
 	register_nav_menus( array(
+		'topbar'    => 'Üst Bar Menü',
 		'primary'   => 'Üst Menü',
 		'secondary' => 'Yan Menü',
+		'footer'    => 'Alt Menü',
 	) );
 }
 endif;

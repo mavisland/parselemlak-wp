@@ -41,13 +41,21 @@
 										<h3 class="widget-title">Hızlı Menü</h3>
 									</div>
 									<div class="widget-body">
-										<ul class="widget-links">
-											<li><a href="#">Alerts and Stuffs</a></li>
-											<li><a href="#">Custom Shortcodes</a></li>
-											<li><a href="#">Pricing Plans</a></li>
-											<li><a href="#">Toggle Elements</a></li>
-											<li><a href="#">Typography</a></li>
-										</ul>
+<?php
+wp_nav_menu( array(
+	'theme_location'  => 'footer',
+	'menu'            => '',
+	'container'       => false,
+	'container_class' => '',
+	'container_id'    => '',
+	'menu_class'      => 'widget-links',
+	'menu_id'         => '',
+	'echo'            => true,
+	'fallback_cb'     => 'wp_page_menu',
+	'items_wrap'      => '<ul id = "%1$s" class = "%2$s">%3$s</ul>',
+	'depth'           => 0,
+));
+?>
 									</div>
 								</div>
 							</div>

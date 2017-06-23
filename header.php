@@ -21,17 +21,32 @@
 			<div class="wrapper">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-xs-12 col-sm-6">
+						<div class="col-xs-12 col-sm-9">
 							<div class="header-top-left">
-								<ul class="social-links">
+								<ul class="social-links pull-left">
 									<li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
 									<li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
 									<li><a href="#" title="Instagram"><i class="fa fa-instagram"></i></a></li>
 									<li><a href="#" title="Youtube"><i class="fa fa-youtube"></i></a></li>
 								</ul>
+<?php
+wp_nav_menu( array(
+	'theme_location'  => 'topbar',
+	'menu'            => '',
+	'container'       => false,
+	'container_class' => '',
+	'container_id'    => '',
+	'menu_class'      => 'topbar-links list-inline pull-left',
+	'menu_id'         => '',
+	'echo'            => true,
+	'fallback_cb'     => 'wp_page_menu',
+	'items_wrap'      => '<ul id = "%1$s" class = "%2$s">%3$s</ul>',
+	'depth'           => 0,
+));
+?>
 							</div><!-- header-top-left -->
 						</div>
-						<div class="col-xs-12 col-sm-6">
+						<div class="col-xs-12 col-sm-3">
 							<div class="header-top-right">
 								<a href="#" class="contact-phone"><i class="fa fa-phone"></i>444 9 411</a>
 							</div><!-- header-top-right -->
