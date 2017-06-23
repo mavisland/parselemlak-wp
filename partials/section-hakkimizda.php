@@ -11,6 +11,13 @@
 								</div><!-- box-inner -->
 							</div><!-- about-box -->
 						</div>
+						<div class="col-xs-12 col-sm-6">
+							<div class="promotional-video">
+								<a href="https://www.youtube.com/watch?v=qbsjB1vH9N8" class="video-play-button popup-youtube" title="Tanıtım Videomuzu İzleyin!">
+									<span></span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

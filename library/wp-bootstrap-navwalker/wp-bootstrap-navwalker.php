@@ -42,7 +42,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 		 */
 		public function start_lvl( &$output, $depth = 0, $args = array() ) {
 			$indent = str_repeat( "\t", $depth );
-			$output .= "\n$indent<ul role=\"menu\" class=\" dropdown-menu\" >\n";
+			$output .= "\n$indent<ul class=\" dropdown-menu\" >\n";
 		}
 
 		/**
@@ -93,7 +93,8 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 				$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 				$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args );
 				$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
-				$output .= $indent . '<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"' . $id . $value . $class_names . '>';
+				// $output .= $indent . '<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"' . $id . $value . $class_names . '>';
+				$output .= $indent . '<li' . $value . $class_names . '>';
 				$atts = array();
 
 				if ( empty( $item->attr_title ) ) {
@@ -106,10 +107,11 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 				$atts['rel']    = ! empty( $item->xfn )		? $item->xfn	: '';
 				// If item has_children add atts to a.
 				if ( $args->has_children && 0 === $depth ) {
-					$atts['href']   		= '#';
-					$atts['data-toggle']	= 'dropdown';
-					$atts['class']			= 'dropdown-toggle';
-					$atts['aria-haspopup']	= 'true';
+					$atts['href']          = '#menu-item-' . $item->ID;
+					// $atts['data-toggle']   = 'dropdown';
+					$atts['class']         = 'dropdown-toggle';
+					// $atts['aria-haspopup'] = 'true';
+					$atts['data-rel']      = 'menu-item-' . $item->ID;
 				} else {
 					$atts['href'] = ! empty( $item->url ) ? $item->url : '';
 				}
@@ -192,11 +194,11 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 			if ( current_user_can( 'edit_theme_options' ) ) {
 
 				/* Get Arguments. */
-				$container = $args['container'];
-				$container_id = $args['container_id'];
+				$container       = $args['container'];
+				$container_id    = $args['container_id'];
 				$container_class = $args['container_class'];
-				$menu_class = $args['menu_class'];
-				$menu_id = $args['menu_id'];
+				$menu_class      = $args['menu_class'];
+				$menu_id         = $args['menu_id'];
 
 				if ( $container ) {
 					echo '<' . esc_attr( $container );

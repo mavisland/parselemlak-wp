@@ -8363,6 +8363,16 @@ a:focus {
 .font-courgette {
   font-family: "Courgette";
 }
+@keyframes pulse-border {
+  0% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+    opacity: 0;
+  }
+}
 /* -------------------------------------------------- *\
 	$HEADER
 \* -------------------------------------------------- */
@@ -8829,7 +8839,7 @@ a:focus {
   height: 16px;
 }
 /* -------------------------------------------------- *\
-    $HOME
+	$HOME
 \* -------------------------------------------------- */
 .hizmetler {
   position: relative;
@@ -9008,6 +9018,74 @@ a:focus {
 .about-box .box-link:focus {
   color: #c09600;
 }
+.promotional-video {
+  color: #575D66;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  position: relative;
+  text-align: center;
+  width: 260px;
+  height: 180px;
+}
+.promotional-video:before {
+  background: url("../images/neler_yapiyoruz.png") left top no-repeat;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.video-play-button {
+  border-radius: 50%;
+  box-sizing: content-box;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 100px;
+  height: 44px;
+  padding: 18px 20px 18px 28px;
+  width: 32px;
+}
+.video-play-button:before,
+.video-play-button:after {
+  border-radius: 50%;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 80px;
+  height: 80px;
+}
+.video-play-button:before {
+  animation: pulse-border 1500ms ease-out infinite;
+  background-color: #e9201e;
+  z-index: 0;
+}
+.video-play-button:after {
+  background-color: #f06564;
+  z-index: 1;
+  transition: all 200ms;
+}
+.video-play-button > span {
+  border-bottom: 22px solid transparent;
+  border-left: 32px solid #fff;
+  border-top: 22px solid transparent;
+  display: block;
+  position: relative;
+  width: 0;
+  height: 0;
+  z-index: 3;
+}
+.video-play-button:hover:after {
+  background-color: #ec3735;
+}
 .recent-news {
   padding-bottom: 10px;
 }
@@ -9048,9 +9126,8 @@ a:focus {
   height: 18px;
   position: absolute;
   bottom: 0;
-  left: 10px;
-  right: -10px;
-  transform: translateY(50%);
+  left: 0;
+  width: 100%;
 }
 .recent-news .news-body > a {
   color: #000;

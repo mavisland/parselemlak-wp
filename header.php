@@ -111,23 +111,9 @@ wp_nav_menu( array(
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-xs-12">
-							<div class="collapse fade" id="subMenu01">
-								<ul class="submenu">
-									<li><a href="#">Hakkımızda</a></li>
-									<li><a href="#">Vizyon &amp; Misyon</a></li>
-									<li><a href="#">Basın Odası</a></li>
-									<li><a href="#">Belgelerimiz</a></li>
-									<li><a href="#">İnsan Kaynakları</a></li>
-								</ul>
-							</div><!-- collapse -->
-							<div class="collapse fade" id="subMenu02">
-								<ul class="submenu">
-									<li><a href="#">Bahçe Bakımı</a></li>
-									<li><a href="#">Arazi Alış &amp; Satış</a></li>
-									<li><a href="#">Fidan Satışı</a></li>
-									<li><a href="#">Bahçe Kurulumu</a></li>
-								</ul>
-							</div><!-- collapse -->
+<?php
+clean_custom_menu("primary");
+?>
 						</div>
 					</div>
 				</div>
