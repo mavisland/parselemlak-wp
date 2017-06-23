@@ -4,17 +4,28 @@
 		<div class="section main-content">
 			<div class="wrapper">
 				<div class="container-fluid">
-					<div class="row">
 <?php if ( has_post_thumbnail() ) : ?>
+					<div class="row">
 						<div class="col-xs-12">
 							<div class="featured-image">
 								<?php the_post_thumbnail("full", [ "class" => "img-responsive", "alt" => get_the_title() ]); ?>
 							</div>
 						</div>
+					</div>
 <?php endif; ?>
+					<div class="row">
 						<div class="col-xs-12 col-sm-9 col-sm-push-3">
+							<h1 class="page-header"><?php the_title(); ?></h1>
+						</div>
+						<div class="hidden-xs col-sm-3 col-sm-pull-9">
+							<a href="#" class="sidebar-collapse">
+								<i class="fa fa-bars"></i>
+							</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-9 col-sm-push-3" id="content">
 							<div class="page-content" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-								<h1><?php the_title(); ?></h1>
 								<?php the_content(); ?>
 								<hr>
 								<div class="sosyal">
@@ -30,7 +41,8 @@
 								<p class="small text-muted"><span class="fa fa-time"></span> <?php the_date(); ?></p>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-3 col-sm-pull-9">
+						<div class="col-xs-12 col-sm-3 col-sm-pull-9" id="sidebar">
+<?php get_template_part( 'partials/page', 'sidebar' ); ?>
 						</div>
 					</div>
 				</div>

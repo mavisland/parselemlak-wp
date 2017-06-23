@@ -2602,4 +2602,11 @@ jQuery(document).ready(function(){
     e.preventDefault();
     slider.trigger('next.owl.carousel');
   });
+
+  // Collapsible Sidebar
+  $(".sidebar-collapse").on('click', function (e) {
+    e.preventDefault();
+    $("body").toggleClass("collapsed-sidebar");
+    return false;
+  });
 });

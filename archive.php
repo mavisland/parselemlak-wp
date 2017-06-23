@@ -5,13 +5,18 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-xs-12 col-sm-9 col-sm-push-3">
-							<div class="row">
-								<div class="col-xs-12">
-									<h1 class="page-header"><?php the_archive_title(); ?>
-										<small><?php the_archive_description(); ?></small>
-									</h1>
-								</div>
-							</div>
+							<h1 class="page-header"><?php the_archive_title(); ?>
+								<small><?php the_archive_description(); ?></small>
+							</h1>
+						</div>
+						<div class="hidden-xs col-sm-3 col-sm-pull-9">
+							<a href="#" class="sidebar-collapse">
+								<i class="fa fa-bars"></i>
+							</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-9 col-sm-push-3" id="content">
 <?php if ( have_posts() ) : ?>
 <?php while ( have_posts() ) : the_post(); ?>
 							<div class="row archive-item">
@@ -39,7 +44,8 @@
 							</div>
 <?php endif; ?>
 						</div>
-						<div class="col-xs-12 col-sm-3 col-sm-pull-9">
+						<div class="col-xs-12 col-sm-3 col-sm-pull-9" id="sidebar">
+<?php get_template_part( 'partials/page', 'sidebar' ); ?>
 						</div>
 					</div>
 				</div>

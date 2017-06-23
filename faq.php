@@ -3,17 +3,34 @@
 get_header();
 ?>
 	<div class="site-content">
+<?php while ( have_posts() ) : the_post(); ?>
 		<div class="section main-content">
 			<div class="wrapper">
 				<div class="container-fluid">
+<?php if ( has_post_thumbnail() ) : ?>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="featured-image">
+								<?php the_post_thumbnail("full", [ "class" => "img-responsive", "alt" => get_the_title() ]); ?>
+							</div>
+						</div>
+					</div>
+<?php endif; ?>
 					<div class="row">
 						<div class="col-xs-12 col-sm-9 col-sm-push-3">
-<?php while ( have_posts() ) : the_post(); ?>
-							<img class="img-responsive" src="http://placehold.it/900x300" alt="">
-							<h1><?php the_title(); ?></h1>
-<div class="panel-group" id="faqAccordion">
-							<?php the_content(); ?>
-</div>
+							<h1 class="page-header"><?php the_title(); ?></h1>
+						</div>
+						<div class="hidden-xs col-sm-3 col-sm-pull-9">
+							<a href="#" class="sidebar-collapse">
+								<i class="fa fa-bars"></i>
+							</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-9 col-sm-push-3" id="content">
+							<div class="panel-group" id="faqAccordion">
+								<?php the_content(); ?>
+							</div>
 							<hr>
 							<div class="sosyal">
 								<div class="sosyal1">
@@ -26,14 +43,15 @@ get_header();
 							</div>
 							<hr>
 							<p class="small text-muted"><span class="fa fa-time"></span> <?php the_date(); ?></p>
-<?php endwhile; ?>
 						</div>
-						<div class="col-xs-12 col-sm-3 col-sm-pull-9">
+						<div class="col-xs-12 col-sm-3 col-sm-pull-9" id="sidebar">
+<?php get_template_part( 'partials/page', 'sidebar' ); ?>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div><!-- main-content -->
+<?php endwhile; ?>
 <?php get_template_part( 'partials/section', 'cntlinks' ); ?>
 	</div><!-- site-content -->
 <?php get_footer(); ?>
