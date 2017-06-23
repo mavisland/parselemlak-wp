@@ -10,9 +10,7 @@ get_header();
 <?php if ( has_post_thumbnail() ) : ?>
 					<div class="row">
 						<div class="col-xs-12">
-							<div class="featured-image">
-								<?php the_post_thumbnail("full", [ "class" => "img-responsive", "alt" => get_the_title() ]); ?>
-							</div>
+							<div class="featured-image" style="background-image: url(<?php echo get_image_url_by_id( get_post_thumbnail_id( get_the_id() ), 'featured' ); ?>);"></div>
 						</div>
 					</div>
 <?php endif; ?>

@@ -8,6 +8,7 @@ function parsel_setup() {
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
+	add_image_size( 'featured', 9999, 270, array( 'center', 'center' ) );
 	register_nav_menus( array(
 		'primary'   => 'Üst Menü',
 		'secondary' => 'Yan Menü',

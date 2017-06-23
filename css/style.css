@@ -9136,14 +9136,13 @@ a:focus {
   padding-top: 30px;
 }
 .main-content .featured-image {
-  background-color: #ededed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 270px;
   margin-bottom: 20px;
-  text-align: center;
-}
-.main-content .featured-image img {
-  display: inline-block;
-  max-width: 100%;
-  height: auto;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
 }
 .sidebar-collapse {
   border-radius: 100%;

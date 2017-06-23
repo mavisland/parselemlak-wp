@@ -6,8 +6,8 @@ get_header();
 		<div class="section main-content">
 			<div class="wrapper">
 				<div class="container-fluid">
-					<div class="row">
 <?php if (have_posts()) : ?>
+					<div class="row">
 <?php while ( have_posts() ) : the_post(); ?>
 						<div class="col-xs-12">
 <?php if (get_option('panel_xkor')!='') { ?>
@@ -47,9 +47,9 @@ get_header();
 							<?php the_content(); ?>
 						</div>
 <?php endwhile; ?>
+					</div>
 <?php endif; ?>
 <?php wp_reset_postdata(); ?>
-					</div>
 				</div>
 			</div>
 		</div><!-- main-content -->

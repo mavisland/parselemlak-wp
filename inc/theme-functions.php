@@ -38,3 +38,19 @@ function soru_shortcode( $atts, $content = null ) {
 	return $output;
 }
 add_shortcode('soru', 'soru_shortcode');
+
+// Remove WP Version from styles and scripts
+add_filter( 'style_loader_src', 'sdt_remove_ver_css_js', 9999 );
+add_filter( 'script_loader_src', 'sdt_remove_ver_css_js', 9999 );
+
+function sdt_remove_ver_css_js( $src ) {
+	if ( strpos( $src, 'ver=' ) )
+		$src = remove_query_arg( 'ver', $src );
+	return $src;
+}
+
+function get_image_url_by_id($image_id, $image_size = "thumbnail") {
+	$image_src = wp_get_attachment_image_src( $image_id, $image_size );
+	$image_url = $image_src[0];
+	return $image_url;
+}
