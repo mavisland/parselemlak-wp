@@ -11,9 +11,7 @@
 								<p class="p404">404</p>
 								<hr>
 								<p>Ulaşmak istediğiniz sayfa bulunamadı. Sayfa değiştirilmiş veya silinmiş olabilir.</p>
-								<p>İsterseniz <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><strong>anasayfa</strong></a>'ya dönerek siteyi dolaşmaya devam edebilir ya da arama yaparak benzer sonuçlar bulabilirsiniz.</p>
-								<hr>
-								<?php get_search_form(); ?>
+								<p>İsterseniz <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><strong>anasayfa</strong></a>'ya dönerek siteyi dolaşmaya devam edebilirsiniz.</p>
 							</div>
 						</div>
 					</div>
