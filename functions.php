@@ -1,7 +1,7 @@
 <?php
 
 // OptionTree Theme version
-define( 'OT_THEME_VERSION', '2.5.4' );
+define( 'OT_THEME_VERSION', '2.6.0' );
 
 if ( ! function_exists( 'parsel_setup' ) ) :
 function parsel_setup() {
@@ -37,64 +37,39 @@ function parsel_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'parsel_scripts' );
 
-// White Label functions
-require get_template_directory() . '/inc/wp-white-label.php';
-
 // Register Custom Navigation Walker
 require get_template_directory() . '/library/wp-bootstrap-navwalker/wp-bootstrap-navwalker.php';
 
-/**
- * Filters the Theme Options ID
- */
-function filter_demo_options_id() {
-	return 'demo_option_tree';
-}
-add_filter( 'ot_options_id', 'filter_demo_options_id' );
-
-/**
- * Filters the Settings ID
- */
-function filter_demo_settings_id() {
-	return 'demo_option_tree_settings';
-}
-add_filter( 'ot_settings_id', 'filter_demo_settings_id' );
-
-/**
- * Filters the Layouts ID
- */
-function filter_demo_layouts_id() {
-	return 'demo_option_tree_layouts';
-}
-add_filter( 'ot_layouts_id', 'filter_demo_layouts_id' );
-
-/**
- * Filters the Theme Option header list.
- */
+// Filters the Theme Option header list.
 function filter_demo_header_list() {
-	 echo '<li id="theme-version"><span>OptionTree Theme ' . OT_THEME_VERSION . '</span></li>';
+	echo '';
 }
 add_action( 'ot_header_list', 'filter_demo_header_list' );
+// Filters the Theme Option header logo link.
+function filter_ot_header_logo_link() {
+	echo '';
+}
+add_action( 'ot_header_logo_link', 'filter_ot_header_logo_link' );
+// Filters the Theme Option header version text.
+function filter_ot_header_version_text() {
+	echo '<li id="option-tree-version"><span>Parsel Emlak / Tema Ayarları</span></li>';
+}
+add_action( 'ot_header_version_text', 'filter_ot_header_version_text' );
 
 // Theme Mode
 add_filter( 'ot_theme_mode', '__return_true' );
-// Child Theme Mode
-add_filter( 'ot_child_theme_mode', '__return_false' );
 // Show Settings Pages
-add_filter( 'ot_show_pages', '__return_true' );
+add_filter( 'ot_show_pages', '__return_false' );
 // Show Theme Options UI Builder
-add_filter( 'ot_show_options_ui', '__return_true' );
+add_filter( 'ot_show_options_ui', '__return_false' );
 // Show Settings Import
-add_filter( 'ot_show_settings_import', '__return_true' );
+add_filter( 'ot_show_settings_import', '__return_false' );
 // Show Settings Export
-add_filter( 'ot_show_settings_export', '__return_true' );
+add_filter( 'ot_show_settings_export', '__return_false' );
 // Show New Layout
 add_filter( 'ot_show_new_layout', '__return_false' );
 // Show Documentation
 add_filter( 'ot_show_docs', '__return_false' );
-// Custom Theme Option page
-add_filter( 'ot_use_theme_options', '__return_true' );
-// Meta Boxes
-add_filter( 'ot_meta_boxes', '__return_true' );
 // Allow Unfiltered HTML in textareas options
 add_filter( 'ot_allow_unfiltered_html', '__return_false' );
 // Loads the meta boxes for post formats
@@ -106,24 +81,9 @@ require( trailingslashit( get_template_directory() ) . 'inc/theme-options.php' )
 // Meta Boxes
 require( trailingslashit( get_template_directory() ) . 'inc/meta-boxes.php' );
 
-function soru_shortcode( $atts, $content = null ) {
-	extract( shortcode_atts( array( 'baslik' => '', ), $atts ) );
-	$rand = rand();
-
-	$output = '
-	<div class="panel panel-default ">
-		<div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#' . $rand . '">
-			<h4 class="panel-title">
-				<a role="button" data-toggle="collapse" data-parent="#faqAccordion" href="#' . $rand . '" aria-expanded="true" aria-controls="' . $rand . '">'. $baslik .'</a>
-			</h4>
-		</div>
-		<div id="' . $rand . '" class="panel-collapse collapse" style="height: 0px;">
-			<div class="panel-body">
-				<p>' . do_shortcode($content) . '</p>
-			</div>
-		</div>
-	</div>';
-
-	return $output;
-}
-add_shortcode('soru', 'soru_shortcode');
+// Custom Post Types
+require get_template_directory() . '/inc/post-types/slider.php';
+// Custom Meta Boxes
+require get_template_directory() . '/inc/metabox/slider.php';
+// Custom theme functions
+require get_template_directory() . '/inc/theme-functions.php';
