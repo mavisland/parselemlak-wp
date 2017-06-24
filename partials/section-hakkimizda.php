@@ -1,3 +1,10 @@
+<?php
+$home_about_title      = ot_get_option("home_about_title");
+$home_about_text       = ot_get_option("home_about_text");
+$home_about_link_url   = ot_get_option("home_about_link_url");
+$home_about_link_title = ot_get_option("home_about_link_title");
+$home_video_url        = ot_get_option("home_video_url");
+?>
 		<div class="section hakkimizda">
 			<div class="wrapper">
 				<div class="container-fluid">
@@ -5,19 +12,27 @@
 						<div class="col-xs-12 col-sm-6">
 							<div class="about-box">
 								<div class="box-inner">
-									<h2 class="box-title">Parsel Emlak Tarım</h2>
-									<p class="box-content">Yatırımcısını düşünen aktif yatırım ve aktif kazanç seçenekleri ile Türkiye de örnek oluşuma imza atmıştır. Aktif yatırım: Arazinize verdiğiniz yatırımın size hem üretim hemde değer olarak dönmesini sağlarken Parsel tarım emlak; Aktif kazançla; 24 ay gibi kısa bir sürede arazinizi NET %75 kar oranı ile arazi sahiplerinden geri almayı taahhüt ediyor.</p>
-									<a href="#" class="box-link">Detaylı bilgi için tıklayınız...</a>
+<?php if ($home_about_title != ""): ?>
+									<h2 class="box-title"><?php echo esc_html($home_about_title); ?></h2>
+<?php endif; ?>
+<?php if ($home_about_text != ""): ?>
+									<p class="box-content"><?php echo esc_html($home_about_text); ?></p>
+<?php endif; ?>
+<?php if ($home_about_link_url != ""): ?>
+									<a href="<?php echo esc_url($home_about_link_url); ?>" class="box-link"><?php echo esc_html($home_about_link_title); ?></a>
+<?php endif; ?>
 								</div><!-- box-inner -->
 							</div><!-- about-box -->
 						</div>
+<?php if ($home_video_url != ""): ?>
 						<div class="col-xs-12 col-sm-6">
 							<div class="promotional-video">
-								<a href="https://www.youtube.com/watch?v=qbsjB1vH9N8" class="video-play-button popup-youtube" title="Tanıtım Videomuzu İzleyin!">
+								<a href="<?php echo esc_url($home_video_url); ?>" class="video-play-button popup-youtube" title="Tanıtım Videomuzu İzleyin!">
 									<span></span>
 								</a>
 							</div>
 						</div>
+<?php endif; ?>
 					</div>
 				</div>
 			</div>

@@ -62,7 +62,12 @@ wp_nav_menu( array(
 						</div>
 						<div class="col-xs-12 col-sm-3">
 							<div class="header-top-right">
-								<a href="#" class="contact-phone"><i class="fa fa-phone"></i>444 9 411</a>
+<?php
+$contact_phone = ot_get_option("contact_phone");
+?>
+<?php if ($contact_phone != ""): ?>
+								<a href="tel:<?php echo str_replace(' ', '', $contact_phone); ?>" class="contact-phone"><i class="fa fa-phone"></i> <?php echo esc_html($contact_phone); ?></a>
+<?php endif; ?>
 							</div><!-- header-top-right -->
 						</div>
 					</div>

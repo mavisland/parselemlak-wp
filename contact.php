@@ -8,40 +8,15 @@ get_header();
 				<div class="container-fluid">
 <?php if (have_posts()) : ?>
 					<div class="row">
-<?php while ( have_posts() ) : the_post(); ?>
+<?php
+while ( have_posts() ) : the_post();
+	$contact_maps = ot_get_option("contact_maps");
+	if ($contact_maps != "") :
+?>
 						<div class="col-xs-12">
-<?php if (get_option('panel_xkor')!='') { ?>
-<?php $xkor = get_option('panel_xkor'); $ykor = get_option('panel_ykor'); ?>
-							<div class="kapla">
-								<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;key=AIzaSyCHOxqTSk9rBhL3i_yhJcwH62fDvwSdpjc"></script>
-								<script>
-									function initialize() {
-									  var myLatlng = new google.maps.LatLng(<?php echo $xkor; ?>, <?php echo $ykor; ?>); var mapOptions = { mapTypeId: google.maps.MapTypeId.ROADMAP, zoom: 16,
-									  zoomControl: true,
-									  scaleControl: false,
-									  scrollwheel: false,
-									  disableDoubleClickZoom: false,
-									  center: myLatlng };
-									  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-									  var contentString = '<?php bloginfo('name'); ?>';
-									  var infowindow = new google.maps.InfoWindow({
-									      content: contentString,
-									  });
-									  var marker = new google.maps.Marker({
-									      position: myLatlng,
-									      map: map,
-									      title: '<?php bloginfo('name'); ?>'
-									  });
-									  google.maps.event.addListener(marker, 'click', function() {
-									    infowindow.open(map,marker);
-									  });
-									}
-									google.maps.event.addDomListener(window, 'load', initialize);
-									</script>
-								<div id="map-canvas" style="float:left;width: 100%; height: 250px; overflow:hidden; padding:0px; margin:0px; border:0px;"></div>
-							</div>
-<?php } ?>
+							<?php echo $contact_maps; ?>
 						</div>
+<?php endif; ?>
 						<div class="col-xs-12">
 							<h1><?php the_title(); ?></h1>
 							<?php the_content(); ?>

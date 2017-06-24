@@ -10,7 +10,12 @@
 										<h3 class="widget-title">Hakkımızda</h3>
 									</div>
 									<div class="widget-body">
-										<p>Gayrimenkul yatırım fırsatlarını kısa vadede kazanca dönüştürüp, gayrimenkul değerini hızla artırırken, üretim yapmayı ve yatırımınızın bir kısmını geri almayı hedeflemiştir</p>
+<?php $footer_about = ot_get_option("footer_about"); ?>
+<?php if ($footer_about != ""): ?>
+										<?php echo $footer_about; ?>
+<?php else : ?>
+										<p>Lütfen, Yönetim Paneli üzerinden "Tema Ayarları" sayfasındaki "Alt Bölüm" sekmesinden "Hakkımızda" alanına metin giriniz.</p>
+<?php endif; ?>
 									</div>
 								</div>
 							</div>
@@ -22,13 +27,29 @@
 										<h3 class="widget-title">İletişim</h3>
 									</div>
 									<div class="widget-body">
+<?php
+$contact_address = ot_get_option("contact_address");
+$contact_phone   = ot_get_option("contact_phone");
+$contact_fax     = ot_get_option("contact_fax");
+$contact_email   = ot_get_option("contact_email");
+?>
 										<dl class="widget-contact">
+<?php if ($contact_address != ""): ?>
 											<dt><i class="fa fa-home"></i></dt>
-											<dd>Körfez Mah. Ahmet Ergüneş Sk. No:21 Kat:2 Daire:9 İzmit / KOCAELİ</dd>
+											<dd><?php echo esc_html($contact_address); ?></dd>
+<?php endif; ?>
+<?php if ($contact_phone != ""): ?>
 											<dt><i class="fa fa-phone"></i></dt>
-											<dd>0262 331 94 11</dd>
+											<dd><a href="tel:<?php echo str_replace(' ', '', $contact_phone); ?>" title=""><?php echo esc_html($contact_phone); ?></a></dd>
+<?php endif; ?>
+<?php if ($contact_fax != ""): ?>
+											<dt><i class="fa fa-fax"></i></dt>
+											<dd><?php echo esc_html($contact_fax); ?></dd>
+<?php endif; ?>
+<?php if ($contact_email != ""): ?>
 											<dt><i class="fa fa-envelope"></i></dt>
-											<dd><a href="#">info@parselemlak.com.tr</a></dd>
+											<dd><a href="mailto:<?php echo esc_html($contact_email); ?>"><?php echo esc_html($contact_email); ?></a></dd>
+<?php endif; ?>
 										</dl>
 									</div>
 								</div>
@@ -75,7 +96,9 @@ wp_nav_menu( array(
 						</div>
 						<div class="col-xs-12 col-sm-3">
 							<div class="footer-bottom-right">
-								<a href="#" class="contact-phone">444 9 411</a>
+<?php if ($contact_phone != ""): ?>
+								<a href="tel:<?php echo str_replace(' ', '', $contact_phone); ?>" class="contact-phone"><?php echo esc_html($contact_phone); ?></a>
+<?php endif; ?>
 							</div>
 						</div>
 					</div>
