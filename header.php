@@ -24,26 +24,6 @@
 						<div class="col-xs-12 col-sm-9">
 							<div class="header-top-left">
 <?php
-$social_facebook  = ot_get_option("social_facebook");
-$social_twitter   = ot_get_option("social_twitter");
-$social_instagram = ot_get_option("social_instagram");
-$social_youtube   = ot_get_option("social_youtube");
-?>
-								<ul class="social-links">
-<?php if ($social_facebook != ""): ?>
-									<li><a href="<?php echo esc_url( $social_facebook ); ?>" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-<?php endif; ?>
-<?php if ($social_twitter != ""): ?>
-									<li><a href="<?php echo esc_url( $social_twitter ); ?>" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-<?php endif; ?>
-<?php if ($social_instagram != ""): ?>
-									<li><a href="<?php echo esc_url( $social_instagram ); ?>" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-<?php endif; ?>
-<?php if ($social_youtube != ""): ?>
-									<li><a href="<?php echo esc_url( $social_youtube ); ?>" title="Youtube"><i class="fa fa-youtube"></i></a></li>
-<?php endif; ?>
-								</ul>
-<?php
 wp_nav_menu( array(
 	'theme_location'  => 'topbar',
 	'menu'            => '',
