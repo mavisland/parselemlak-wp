@@ -9,6 +9,7 @@ function parsel_setup() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
 	add_image_size( 'featured', 9999, 270, array( 'center', 'center' ) );
+	add_image_size( 'post-thumb', 350, 220);
 	register_nav_menus( array(
 		'topbar'    => 'Üst Bar Menü',
 		'primary'   => 'Üst Menü',
@@ -42,6 +43,9 @@ add_action( 'wp_enqueue_scripts', 'parsel_scripts' );
 
 // Register Custom Navigation Walker
 require get_template_directory() . '/library/wp-bootstrap-navwalker/wp-bootstrap-navwalker.php';
+
+// Bootstrap Breadcrumbs
+require get_template_directory() . '/library/wp-bootstrap-breadcrumb/wp-bootstrap-breadcrumb.php';
 
 // Filters the Theme Option header list.
 function filter_demo_header_list() {
@@ -81,8 +85,6 @@ add_filter( 'ot_post_formats', '__return_true' );
 require( trailingslashit( get_template_directory() ) . 'admin/ot-loader.php' );
 // Theme Options
 require( trailingslashit( get_template_directory() ) . 'inc/theme-options.php' );
-// Meta Boxes
-require( trailingslashit( get_template_directory() ) . 'inc/meta-boxes.php' );
 
 // Custom Post Types
 require get_template_directory() . '/inc/post-types/slider.php';

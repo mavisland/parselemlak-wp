@@ -12,13 +12,13 @@ $home_video_url        = ot_get_option("home_video_url");
 						<div class="col-xs-12 col-sm-6">
 							<div class="about-box">
 								<div class="box-inner">
-<?php if ($home_about_title != ""): ?>
+<?php if ($home_about_title != "") : ?>
 									<h2 class="box-title"><?php echo esc_html($home_about_title); ?></h2>
 <?php endif; ?>
-<?php if ($home_about_text != ""): ?>
+<?php if ($home_about_text != "") : ?>
 									<p class="box-content"><?php echo esc_html($home_about_text); ?></p>
 <?php endif; ?>
-<?php if ($home_about_link_url != ""): ?>
+<?php if ($home_about_link_url != "") : ?>
 									<a href="<?php echo esc_url($home_about_link_url); ?>" class="box-link"><?php echo esc_html($home_about_link_title); ?></a>
 <?php endif; ?>
 								</div><!-- box-inner -->
@@ -40,57 +40,89 @@ $home_video_url        = ot_get_option("home_video_url");
 				<div class="wrapper">
 					<div class="container-fluid">
 						<div class="row">
+<?php
+$home_custom_post_01 = ot_get_option("home_custom_post_01");
+$home_custom_post_02 = ot_get_option("home_custom_post_02");
+$home_custom_post_03 = ot_get_option("home_custom_post_03");
+?>
+<?php
+if ($home_custom_post_01):
+	$home_cp_01 = get_post($home_custom_post_01);
+?>
 							<div class="col-xs-12 col-sm-4">
 								<div class="news-item">
 									<div class="news-inner">
 										<div class="news-object">
-											<a href="#">
-												<img src="<?php echo get_template_directory_uri(); ?>/images/haber02.jpg" alt="Başlık Başlık Başlık Başlık">
+											<a href="<?php echo esc_url(get_permalink($home_cp_01->ID)); ?>">
+<?php if (has_post_thumbnail($home_cp_01->ID)): ?>
+												<img src="<?php echo get_image_url_by_id( get_post_thumbnail_id($home_cp_01->ID), 'post-thumb' ); ?>" alt="<?php echo esc_html($home_cp_01->post_title); ?>">
+<?php else: ?>
+												<img src="<?php echo get_template_directory_uri(); ?>/images/default-post-thumb.jpg" alt="<?php echo esc_html($home_cp_01->post_title); ?>">
+<?php endif; ?>
 											</a>
 										</div>
 										<div class="news-body">
-											<a href="#">
-												<h4 class="news-title">Başlık Başlık Başlık Başlık</h4>
-												<p class="news-excerpt">dağılımı sağlayarak okunurluğu artırmasıdır. Şu anda birçok masaüstü yayıncılık paketi ve web sayfa düzenleyicisi, varsayılan mıgır metinler olarak Lorem Ipsum kullanmaktadır.</p>
+											<a href="<?php echo esc_url(get_permalink($home_cp_01->ID)); ?>">
+												<h4 class="news-title"><?php echo esc_html($home_cp_01->post_title); ?></h4>
+												<p class="news-excerpt"><?php echo (!empty($home_cp_01->post_excerpt)) ? esc_html($home_cp_01->post_excerpt) : "Henüz içerik yazısı girilmemiş."; ?></p>
 											</a>
 										</div>
 									</div>
 								</div><!-- news-item -->
 							</div>
+<?php endif; ?>
+<?php
+if ($home_custom_post_01):
+	$home_cp_02 = get_post($home_custom_post_02);
+?>
 							<div class="col-xs-12 col-sm-4">
 								<div class="news-item">
 									<div class="news-inner">
 										<div class="news-object">
-											<a href="#">
-												<img src="<?php echo get_template_directory_uri(); ?>/images/haber02.jpg" alt="Başlık Başlık Başlık Başlık">
+											<a href="<?php echo esc_url(get_permalink($home_cp_02->ID)); ?>">
+<?php if (has_post_thumbnail($home_cp_02->ID)): ?>
+												<img src="<?php echo get_image_url_by_id( get_post_thumbnail_id($home_cp_02->ID), 'post-thumb' ); ?>" alt="<?php echo esc_html($home_cp_02->post_title); ?>">
+<?php else: ?>
+												<img src="<?php echo get_template_directory_uri(); ?>/images/default-post-thumb.jpg" alt="<?php echo esc_html($home_cp_02->post_title); ?>">
+<?php endif ?>
 											</a>
 										</div>
 										<div class="news-body">
-											<a href="#">
-												<h4 class="news-title">Başlık Başlık Başlık Başlık</h4>
-												<p class="news-excerpt">dağılımı sağlayarak okunurluğu artırmasıdır. Şu anda birçok masaüstü yayıncılık paketi ve web sayfa düzenleyicisi, varsayılan mıgır metinler olarak Lorem Ipsum kullanmaktadır.</p>
+											<a href="<?php echo esc_url(get_permalink($home_cp_02->ID)); ?>">
+												<h4 class="news-title"><?php echo esc_html($home_cp_02->post_title); ?></h4>
+												<p class="news-excerpt"><?php echo (!empty($home_cp_02->post_excerpt)) ? esc_html($home_cp_02->post_excerpt) : "Henüz içerik yazısı girilmemiş."; ?></p>
 											</a>
 										</div>
 									</div>
 								</div><!-- news-item -->
 							</div>
+<?php endif; ?>
+<?php
+if ($home_custom_post_01):
+	$home_cp_03 = get_post($home_custom_post_03);
+?>
 							<div class="col-xs-12 col-sm-4">
 								<div class="news-item">
 									<div class="news-inner">
 										<div class="news-object">
-											<a href="#">
-												<img src="<?php echo get_template_directory_uri(); ?>/images/haber02.jpg" alt="Başlık Başlık Başlık Başlık">
+											<a href="<?php echo esc_url(get_permalink($home_cp_03->ID)); ?>">
+<?php if (has_post_thumbnail($home_cp_03->ID)): ?>
+												<img src="<?php echo get_image_url_by_id( get_post_thumbnail_id($home_cp_03->ID), 'post-thumb' ); ?>" alt="<?php echo esc_html($home_cp_03->post_title); ?>">
+<?php else: ?>
+												<img src="<?php echo get_template_directory_uri(); ?>/images/default-post-thumb.jpg" alt="<?php echo esc_html($home_cp_03->post_title); ?>">
+<?php endif; ?>
 											</a>
 										</div>
 										<div class="news-body">
-											<a href="#">
-												<h4 class="news-title">Başlık Başlık Başlık Başlık</h4>
-												<p class="news-excerpt">dağılımı sağlayarak okunurluğu artırmasıdır. Şu anda birçok masaüstü yayıncılık paketi ve web sayfa düzenleyicisi, varsayılan mıgır metinler olarak Lorem Ipsum kullanmaktadır.</p>
+											<a href="<?php echo esc_url(get_permalink($home_cp_03->ID)); ?>">
+												<h4 class="news-title"><?php echo esc_html($home_cp_03->post_title); ?></h4>
+												<p class="news-excerpt"><?php echo (!empty($home_cp_03->post_excerpt)) ? esc_html($home_cp_03->post_excerpt) : "Henüz içerik yazısı girilmemiş."; ?></p>
 											</a>
 										</div>
 									</div>
 								</div>
 							</div>
+<?php endif; ?>
 						</div>
 					</div>
 				</div>

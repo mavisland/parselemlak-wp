@@ -87,7 +87,8 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 				if ( $args->has_children ) {
 					$class_names .= ' dropdown';
 				}
-				if ( in_array( 'current-menu-item', $classes, true ) ) {
+				// if ( in_array( 'current-menu-item', $classes, true ) ) {
+				if ( in_array('current-menu-item', $classes) || in_array('current-menu-ancestor', $classes) ) {
 					$class_names .= ' active';
 				}
 				$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';

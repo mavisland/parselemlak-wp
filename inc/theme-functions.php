@@ -56,7 +56,12 @@ function get_image_url_by_id($image_id, $image_size = "thumbnail") {
 }
 
 function remove_css_id_filter($var) {
-	return is_array($var) ? array_intersect($var, array('current-menu-item')) : '';
+	$classes = array(
+		'current-menu-ancestor',
+		'current-menu-item',
+		'menu-parent-item',
+	);
+	return is_array($var) ? array_intersect($var, $classes) : '';
 }
 add_filter( 'page_css_class', 'remove_css_id_filter', 100, 1);
 add_filter( 'nav_menu_item_id', 'remove_css_id_filter', 100, 1);
@@ -77,12 +82,14 @@ function clean_custom_menu( $theme_location ) {
 			if ( $parent_id == $menu_item->menu_item_parent ) {
 				if ( !$submenu ) {
 					$submenu = true;
-					$menu_list .= '<div class="collapse fade" id="menu-item-' . $parent_id . '">' ."\n";
+					$menu_list .= '<div class="submenu-wrapper" id="menu-item-' . $parent_id . '">' ."\n";
+					$menu_list .= '<div class="wrapper">' ."\n";
 					$menu_list .= '<ul class="submenu">' ."\n";
 				}
 				$menu_list .= '<li><a href="'.$link.'">'.$title.'</a></li>' ."\n";
 				if ( $menu_items[ $count + 1 ]->menu_item_parent != $parent_id && $submenu ){
 					$menu_list .= '</ul>' ."\n";
+					$menu_list .= '</div>' ."\n";
 					$menu_list .= '</div>' ."\n";
 					$submenu = false;
 				}

@@ -54,25 +54,26 @@ $contact_phone = ot_get_option("contact_phone");
 				</div>
 			</div>
 		</div><!-- header-top -->
-		<div class="navbar">
-			<div class="wrapper">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-xs-12 col-sm-3">
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
-									<span class="sr-only">Menüyü görüntüle</span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-								</button>
-								<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-									<span class="label sr-only"><?php bloginfo( 'name' ); ?></span>
-									<img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="<?php bloginfo( 'name' ); ?>">
-								</a>
-							</div><!-- navbar-header -->
-						</div>
-						<div class="col-xs-12 col-sm-9">
+		<div class="sticky">
+			<div class="navbar">
+				<div class="wrapper">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xs-12 col-sm-3">
+								<div class="navbar-header">
+									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+										<span class="sr-only">Menüyü görüntüle</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+									<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+										<span class="label sr-only"><?php bloginfo( 'name' ); ?></span>
+										<img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="<?php bloginfo( 'name' ); ?>">
+									</a>
+								</div><!-- navbar-header -->
+							</div>
+							<div class="col-xs-12 col-sm-9">
 <?php
 wp_nav_menu( array(
 	'menu'            => 'primary',
@@ -86,22 +87,13 @@ wp_nav_menu( array(
 	'walker'          => new WP_Bootstrap_Navwalker())
 );
 ?>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div><!-- navbar -->
-		<div class="header-bottom" id="subMenu">
-			<div class="wrapper">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-xs-12">
-<?php
-clean_custom_menu("primary");
-?>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!-- header-bottom -->
+			</div><!-- navbar -->
+			<div class="header-bottom" id="subMenu">
+<?php clean_custom_menu("primary"); ?>
+			</div><!-- header-bottom -->
+		</div><!-- sticky -->
 	</header><!-- site-header -->
