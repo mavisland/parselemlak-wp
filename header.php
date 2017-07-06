@@ -93,6 +93,9 @@ wp_nav_menu( array(
 				</div>
 			</div><!-- navbar -->
 			<div class="header-bottom" id="subMenu">
+				<div class="sm"></div>
+				<div class="sm-top"></div>
+				<div class="sm-bottom"></div>
 <?php clean_custom_menu("primary"); ?>
 			</div><!-- header-bottom -->
 		</div><!-- sticky -->

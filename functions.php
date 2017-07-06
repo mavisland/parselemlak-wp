@@ -13,7 +13,6 @@ function parsel_setup() {
 	register_nav_menus( array(
 		'topbar'    => 'Üst Bar Menü',
 		'primary'   => 'Üst Menü',
-		'secondary' => 'Yan Menü',
 		'footer'    => 'Alt Menü',
 	) );
 }

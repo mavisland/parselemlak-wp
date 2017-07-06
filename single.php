@@ -5,12 +5,7 @@
 			<div class="wrapper">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="hidden-xs col-sm-2">
-							<a href="#" class="sidebar-collapse">
-								<i class="fa fa-bars"></i>
-							</a>
-						</div>
-						<div class="col-xs-12 col-sm-8">
+						<div class="col-xs-12">
 							<div class="inner-page-header">
 								<h1 class="page-header"><?php the_title(); ?></h1>
 <?php
@@ -28,13 +23,10 @@ if( function_exists('bootstrap_breadcrumb') )
 					</div>
 <?php endif; ?>
 					<div class="row">
-						<div class="col-xs-12 col-sm-9 col-sm-push-3" id="content">
+						<div class="col-xs-12">
 							<div class="page-content" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 								<?php the_content(); ?>
 							</div>
-						</div>
-						<div class="col-xs-12 col-sm-3 col-sm-pull-9" id="sidebar">
-<?php get_template_part( 'partials/page', 'sidebar' ); ?>
 						</div>
 					</div>
 				</div>

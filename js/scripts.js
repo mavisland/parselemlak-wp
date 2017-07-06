@@ -2480,8 +2480,6 @@ $(document).ready(function(){
  * @author Tanju Yildiz <ben@tanjuyildiz.com> 
  */
 jQuery(document).ready(function(){
-  $("body").addClass("collapsed-sidebar");
-
   /**
    * Shrinking Navbar
    */
@@ -2531,12 +2529,23 @@ jQuery(document).ready(function(){
 
   if ($(window).width() >= 768) {
     var currentMenuAnchestor = $('#menu > ul.navbar-nav > li.current-menu-ancestor');
+    var currentMenuItem      = $('#menu > ul.navbar-nav > li.current-menu-item');
+    var isHeaderFixed = false;
 
     if (currentMenuAnchestor.length > 0) {
-      var $menuID = $('#menu > ul.navbar-nav > li.current-menu-ancestor > a.dropdown-toggle').attr('data-rel');
+      var fixedMenuID = $('#menu > ul.navbar-nav > li.current-menu-ancestor > a.dropdown-toggle').attr('data-rel');
+      isHeaderFixed = true;
+    } else if (currentMenuItem.length > 0) {
+      var fixedMenuID = $('#menu > ul.navbar-nav > li.current-menu-item > a.dropdown-toggle').attr('data-rel');
+      isHeaderFixed = true;
+    }
+
+    if (isHeaderFixed !== false) {
+      var $menuID = fixedMenuID;
 
       siteHeader.addClass("fixed");
 
+      $(".header-bottom").addClass("selected");
       $("#" + $menuID).addClass("selected");
 
       $('#menu > ul.navbar-nav > li.current-menu-ancestor > a.dropdown-toggle[data-rel="' + $menuID + '"]')
@@ -2620,10 +2629,17 @@ jQuery(document).ready(function(){
     slider.trigger('next.owl.carousel');
   });
 
-  // Collapsible Sidebar
-  $(".sidebar-collapse").on('click', function (e) {
-    e.preventDefault();
-    $("body").toggleClass("collapsed-sidebar");
-    return false;
+  /**
+   * Recent News
+   */
+  var recentNews = $("#recentNews");
+
+  recentNews.owlCarousel({
+    autoplay: true,
+    autoplayHoverPause: true,
+    dots: false,
+    loop: (slider.find(".item").length > 1 ? true : false),
+    items: 1,
+    nav: false,
   });
 });

@@ -101,3 +101,22 @@ function clean_custom_menu( $theme_location ) {
 	}
 	echo $menu_list;
 }
+
+//* Show the taxonomy ID
+add_filter( "manage_edit-category_columns", 'my_add_col' );
+add_filter( "manage_edit-category_sortable_columns", 'my_add_col' );
+add_filter( "manage_category_custom_column", 'my_tax_id', 10, 3 );
+
+function my_add_col( $new_columns ) {
+	$new_columns = array(
+		'cb' => '<input type="checkbox" />',
+		'name'   => __('Name'),
+		'tax_id' => 'ID',
+		'slug'   => __('Slug'),
+		'posts'  => __('Posts'),
+	);
+	return $new_columns;
+}
+function my_tax_id( $value, $name, $id ) {
+	return 'tax_id' === $name ? $id : $value;
+}
